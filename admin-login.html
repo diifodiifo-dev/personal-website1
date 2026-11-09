@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <title>Owner sign in | Diifoz</title>
+</head>
+<body class="admin-page">
+  <main class="admin-card">
+    <a class="logo" href="index.html">Diifoz</a>
+    <h1>Owner sign in</h1>
+    <p>We’ll send a secure, one-time sign-in link to your owner email.</p>
+    <p class="admin-email" id="ownerEmail"></p>
+    <button class="btn" id="sendLink" type="button">Email me a sign-in link</button>
+    <p class="admin-status" id="loginStatus" role="status" aria-live="polite"></p>
+    <a class="admin-back" href="index.html#contact">Back to the website</a>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
+
