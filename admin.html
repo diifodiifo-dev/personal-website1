@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <title>Contact inbox | Diifoz</title>
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <a class="logo" href="index.html">Diifoz</a>
+        <h1>Contact inbox</h1>
+        <p id="signedInAs" class="admin-muted"></p>
+      </div>
+      <button class="admin-signout" id="signOut" type="button">Sign out</button>
+    </header>
+    <p id="inboxStatus" class="admin-status" role="status" aria-live="polite">Checking your sign-in…</p>
+    <section id="messageList" class="message-list" aria-label="Contact messages"></section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
+
