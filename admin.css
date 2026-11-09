@@ -1,0 +1,150 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: grid;
+  place-items: center;
+  background: #080808;
+}
+
+.admin-card,
+.admin-shell {
+  width: min(100%, 850px);
+  margin: 0 auto;
+  padding: clamp(2.4rem, 6vw, 5rem);
+  border: 1px solid #3c2929;
+  border-radius: 1.8rem;
+  background: #111;
+  box-shadow: 0 2rem 6rem #0008;
+}
+
+.admin-card {
+  max-width: 480px;
+  text-align: center;
+}
+
+.admin-page .logo {
+  display: inline-block;
+  color: #b74b4b;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-page h1 {
+  margin: 1.5rem 0 0.8rem;
+  font-size: clamp(2.5rem, 6vw, 3.6rem);
+}
+
+.admin-page p {
+  color: #ccc;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.admin-email {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.admin-page .btn {
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+
+.admin-page .btn:disabled,
+.admin-signout:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.admin-status {
+  min-height: 2.4rem;
+  margin: 1.5rem 0;
+}
+
+.admin-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #ccc;
+  font-size: 1.4rem;
+}
+
+.admin-shell {
+  align-self: start;
+}
+
+.admin-header {
+  position: static;
+  height: auto;
+  padding: 0 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: none;
+}
+
+.admin-header h1 {
+  margin-bottom: 0;
+}
+
+.admin-muted {
+  margin: 0.6rem 0 0;
+}
+
+.admin-signout {
+  padding: 0.9rem 1.4rem;
+  border: 1px solid #b74b4b;
+  border-radius: 0.8rem;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 1.4rem;
+}
+
+.message-list {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.message-card {
+  padding: 1.8rem;
+  border: 1px solid #333;
+  border-radius: 1.2rem;
+  background: #171717;
+}
+
+.message-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  color: #aaa;
+  font-size: 1.3rem;
+}
+
+.message-card h2 {
+  margin: 0.6rem 0;
+  font-size: 1.8rem;
+}
+
+.message-card a {
+  color: #e18b8b;
+}
+
+.message-body {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  .admin-page {
+    padding: 2rem 1.2rem;
+  }
+
+  .admin-header {
+    align-items: flex-start;
+  }
+}
+

@@ -87,26 +87,63 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach(section => observer.observe(section));
 });
 
-// CONTACT FORM HANDLER
+// Save contact form submissions through Supabase's Data API.
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 
-contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+if (contactForm && formStatus) {
+  contactForm.addEventListener("submit", async event => {
+    event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const config = window.SUPABASE_CONFIG;
+    const values = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      message: document.getElementById("message").value.trim()
+    };
 
-    if (!name || !email || !message) {
-        formStatus.style.color = "red";
-        formStatus.textContent = "Please fill in all fields.";
-        return;
+    if (!values.name || !values.email || !values.message) {
+      formStatus.style.color = "#ff7777";
+      formStatus.textContent = "Please fill in all fields.";
+      return;
     }
 
-    formStatus.style.color = "#b74b4b";
-    formStatus.textContent = "Message sent successfully! (Demo)";
+    if (!config?.url || !config?.publishableKey) {
+      formStatus.style.color = "#ff7777";
+      formStatus.textContent = "The contact form is not connected yet. Please email me directly.";
+      return;
+    }
 
-    contactForm.reset();
-});
+    submitButton.disabled = true;
+    formStatus.style.color = "#ccc";
+    formStatus.textContent = "Sending your message…";
+
+    try {
+      const response = await fetch(`${config.url}/rest/v1/portfolio_contact_messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: config.publishableKey,
+          Authorization: `Bearer ${config.publishableKey}`,
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (!response.ok) throw new Error(`Supabase returned ${response.status}`);
+
+      formStatus.style.color = "#b74b4b";
+      formStatus.textContent = "Thanks! Your message has been sent.";
+      contactForm.reset();
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      formStatus.style.color = "#ff7777";
+      formStatus.textContent = "Your message could not be sent. Please try again or email me directly.";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
 
